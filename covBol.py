@@ -106,7 +106,7 @@ def getDataSqlite(database, table='bolCovid19'):
     bolDeceases.append(m['contador']['decesos'])
     cbbaCases.append(m['departamento']['cb']['contador']['confirmados'])
     cbbaDeceases.append(m['departamento']['cb']['contador']['decesos'])
-  
+
   conn.close()
   return bolDatetime, bolCases, bolDeceases, cbbaCases, cbbaDeceases
 
@@ -159,7 +159,7 @@ def ploting(n, x, y ,z, w, v):
 
   axs[1].xaxis.set_major_locator(dates.DayLocator())
   axs[1].xaxis.set_major_formatter(hfmt)
-  
+
   #Formateo la caja de informacion de coordenadas
   axs01.format_xdata = dates.DateFormatter('%d-%m-%Y')
   axs01.format_ydata = lambda x: '%1.0f Casos' % x
@@ -183,7 +183,7 @@ def printTable(hed, *args):
 
 def main():
   pass
-  
+
 if __name__ == '__main__':
   print("Comenzando el programa\n")
   #main()
@@ -197,7 +197,7 @@ if __name__ == '__main__':
       counter +=1
       print("Intentando nuevamente")
       continue
-    
+
     isNewJson = checkOldDatetimeJsonFile(jsonData)
 
     if(isNewJson):
@@ -211,7 +211,7 @@ if __name__ == '__main__':
       print(f"No hay nuevos datos.\nIntentando en {timeSleep} segs")
       counter += 1
       time.sleep(timeSleep)
-  
+
   if (counter==timesToCheck):
     print(f'\nSe intento {timesToCheck} veces')
     print('No se encontraron nuevos datos\n')
@@ -230,7 +230,7 @@ if __name__ == '__main__':
     printTable(headers, xDateStr[-20:], *[a[-20:] for a in aux2[1:]])
   else:
     printTable(headers, xDateStr, *aux2[1:])
-  
+
   #fig1 = ploting(1, xDate, aCases, aDeaths, aNewCases, aNewDeaths)
   #fig1.suptitle('Grafica Bolivia')
   #fig1.canvas.set_window_title('Graficas Bolivia')
