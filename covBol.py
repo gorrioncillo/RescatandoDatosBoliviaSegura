@@ -33,7 +33,9 @@ def getDataJson():
       print('El servidor no pudo manejar el pedido')
       print('Error code: ', e.code)
       return -1
-  #except de json read
+  except json.JSONDecoderError as e:
+    print('Hubo un error al leer el recurso JSON')
+    return -1
   return jsonDatos
 
 def checkOldDatetimeJsonFile(newJsonData):
@@ -94,6 +96,7 @@ def getDataSqlite(database, table='bolCovid19'):
   cbbaDeceases = []
 
   query = f'SELECT * FROM {table}' #bolCovid19
+# si la tabla no existe crearla, campos aplanados
   conn = sqlite3.connect(database)
   c = conn.cursor()
   c.execute(query)
