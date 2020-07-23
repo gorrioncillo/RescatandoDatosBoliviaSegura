@@ -4,7 +4,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import matplotlib
 matplotlib.use('Qt5Agg')
 import urllib.request, urllib.error,\
-  json, pprint, os.path, csv, time, sqlite3, tinydb,\
+  json, os.path, csv, time, sqlite3, tinydb,\
   matplotlib.pyplot as plt, matplotlib.dates as dates
 from datetime import datetime
 
