@@ -229,8 +229,8 @@ if __name__ == '__main__':
   headers=['Fecha', 'Casos', 'Muertes','cbCasos', 'cbMuet',
           'Casos', 'Muertes', 'cbCasos', 'cbMuet']
   aux2 = aux1 + aux2
-  if(len(xDateStr)>=20):
-    printTable(headers, xDateStr[-20:], *[a[-20:] for a in aux2[1:]])
+  if(len(xDateStr)>=23):
+    printTable(headers, xDateStr[-23:], *[a[-23:] for a in aux2[1:]])
   else:
     printTable(headers, xDateStr, *aux2[1:])
 
