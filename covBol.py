@@ -1,11 +1,11 @@
 import os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-import matplotlib
-matplotlib.use('Qt5Agg')
+#import matplotlib.pyplot as plt, matplotlib.dates as dates
+#import matplotlib
+#matplotlib.use('Qt5Agg')
 import urllib.request, urllib.error,\
-  json, os.path, csv, time, sqlite3, tinydb,\
-  matplotlib.pyplot as plt, matplotlib.dates as dates
+  json, os.path, csv, time, sqlite3, tinydb
 from datetime import datetime
 
 urlBolSeg = 'https://boliviasegura.agetic.gob.bo/wp-content/json/api.php'
@@ -139,42 +139,42 @@ def newPeople(tupData):
   d.insert(0,0)
   return a,b,c,d
 
-def ploting(n, x, y ,z, w, v):
-  x = dates.date2num(x)
-  hfmt = dates.DateFormatter('%m\n%d')
-
-  fig = plt.figure(n)
-  axs = fig.subplots(nrows=2, ncols=1)
-
-  axs[0].bar(x, w, width=0.15, alpha=0.5, color='yellow',
-            label='Nuevos Casos')
-  axs01 = axs[0].twinx()
-  axs01.scatter(x, y, color='blue', label='Casos Acumulados')
-  #ax = fig.gca()
-  axs[0].xaxis.set_major_locator(dates.DayLocator())
-  axs[0].xaxis.set_major_formatter(hfmt)
-
-
-  axs[1].bar(x, v, width=0.15, alpha=0.5, color='black',
-            label='Nuevas Muertes')
-  axs11 = axs[1].twinx()
-  axs11.scatter(x, z, color='red', label='Muertes Acumuladas')
-
-  axs[1].xaxis.set_major_locator(dates.DayLocator())
-  axs[1].xaxis.set_major_formatter(hfmt)
-
-  #Formateo la caja de informacion de coordenadas
-  axs01.format_xdata = dates.DateFormatter('%d-%m-%Y')
-  axs01.format_ydata = lambda x: '%1.0f Casos' % x
-  axs01.grid(True)
-  axs11.format_xdata = dates.DateFormatter('%d-%m-%Y')
-  axs11.format_ydata = lambda x: '%1.0f Casos' % x
-  axs11.grid(True)
-  fig.autofmt_xdate()
-  fig.subplots_adjust(top=0.88, bottom=0.1, left=0.05, right=0.94,
-                      hspace=0.1, wspace=0.2)
-  fig.legend(loc='upper center', ncol=4, bbox_to_anchor=(0.5,0.955))
-  return fig
+#def ploting(n, x, y ,z, w, v):
+#  x = dates.date2num(x)
+#  hfmt = dates.DateFormatter('%m\n%d')
+#
+#  fig = plt.figure(n)
+#  axs = fig.subplots(nrows=2, ncols=1)
+#
+#  axs[0].bar(x, w, width=0.15, alpha=0.5, color='yellow',
+#            label='Nuevos Casos')
+#  axs01 = axs[0].twinx()
+#  axs01.scatter(x, y, color='blue', label='Casos Acumulados')
+#  #ax = fig.gca()
+#  axs[0].xaxis.set_major_locator(dates.DayLocator())
+#  axs[0].xaxis.set_major_formatter(hfmt)
+#
+#
+#  axs[1].bar(x, v, width=0.15, alpha=0.5, color='black',
+#            label='Nuevas Muertes')
+#  axs11 = axs[1].twinx()
+#  axs11.scatter(x, z, color='red', label='Muertes Acumuladas')
+#
+#  axs[1].xaxis.set_major_locator(dates.DayLocator())
+#  axs[1].xaxis.set_major_formatter(hfmt)
+#
+#  #Formateo la caja de informacion de coordenadas
+#  axs01.format_xdata = dates.DateFormatter('%d-%m-%Y')
+#  axs01.format_ydata = lambda x: '%1.0f Casos' % x
+#  axs01.grid(True)
+#  axs11.format_xdata = dates.DateFormatter('%d-%m-%Y')
+#  axs11.format_ydata = lambda x: '%1.0f Casos' % x
+#  axs11.grid(True)
+#  fig.autofmt_xdate()
+#  fig.subplots_adjust(top=0.88, bottom=0.1, left=0.05, right=0.94,
+#                      hspace=0.1, wspace=0.2)
+#  fig.legend(loc='upper center', ncol=4, bbox_to_anchor=(0.5,0.955))
+#  return fig
 
 def printTable(hed, *args):
   formatStr = "{:<11}" + ("{:<9}" * (len(hed)-1))
